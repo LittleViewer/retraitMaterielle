@@ -3,30 +3,26 @@
 class autoloading_include {
     
     private $instanceClass;
-    private $code;
-    private $arrayClass;
     
+    
+    /**
+     * Permet d'initialiser l'ensemble de la fonction de la classe
+     * @param string $dir
+     * @see ScanDir()
+     * @see requireAutomatic()
+     */
     public function __construct($dir= null) {
         $foldClassArray  = $this->scandDir($dir);
         
         $this->instanceClass = $this->requireAutomatic($foldClassArray, $dir);
         
-        
-        $this->code = function ($instanceClass, $requireClass) {
-            $variableInstance = [];
-            foreach ($requireClass as $require) {
-                eval($require);
+        $this->returnInstance();
             }
-            
-            foreach ($instanceClass as $instance) {
-                array_push($variableInstance, eval("return $instance"));
-            }
-            return $variableInstance;
-        };
-        
-        
-    }
 
+   /**
+    * Trouve dynamiquement tout les fichier de classe php
+    * @param string $dir
+    */
     private function scandDir($dir) {
         if (isset($dir)) {
 
@@ -37,7 +33,7 @@ class autoloading_include {
 
                 if ($fold != "." AND $fold != ".." && $fold != "autoloading_include.php") {
                     $foldArray = explode(".", $fold);
-                    if (count($foldArray) === 2 && $foldArray[1] === "php" && is_readable($fold)) {
+                    if (count($foldArray) === 2 && $foldArray[1] === "php" && is_readable($dir.$fold)) {
 
                         array_push($dirProper, $fold);
                     }
@@ -47,6 +43,12 @@ class autoloading_include {
         return $dirProper;
     }
     
+    /**
+     * Permet traiter l'ensemble des nom de fichier pour construire des require
+     * @param array $foldClassArray
+     * @param stirng $dir
+     * @return array
+     */
     private function requireAutomatic($foldClassArray, $dir) {
         $instanceClass = [];
         $requireArray = [];
@@ -68,10 +70,32 @@ class autoloading_include {
     return [$instanceClass,$requireArray, $className];
     }
     
-    public function returnCode() {
-        return $this->code;
-    }
+
+    
+    /**
+     * Returne tout les information de l'instanciaiton des classe
+     * @return array
+     */
     public function returnInstance() {
         return $this->instanceClass;
     }
+    
+    
+    /**
+     * Retourne l'ensemble des objet en array dont il faut selectionner les obj afin de les executer;
+     * @return array
+     */
+    public function executeInstance() {
+            $variableInstance = [];
+
+            foreach ($this->instanceClass[1] as $require) {
+                eval($require);
+            }
+            
+            foreach ($this->instanceClass[0] as $instance) {
+                array_push($variableInstance, eval("return $instance"));
+            }
+            return $variableInstance;
+    }
+    
 }
