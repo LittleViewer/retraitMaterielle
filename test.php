@@ -17,7 +17,4 @@ $code = $autoRequire->returnCode();
 $instance = $autoRequire->returnInstance();
 $output = $code($instance[0], $instance[1], $instance[2]);
 
-$pdo_gestion = getInstanceByClass($output, "db_pdo");
-
-$pdo_gestion->connect_static;
-
+var_dump($output[0]->test_connect());

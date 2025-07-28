@@ -35,9 +35,9 @@ class autoloading_include {
 
             foreach ($output as $fold) {
 
-                if ($fold != "." AND $fold != ".." AND $fold != "autoloading_include.php") {
+                if ($fold != "." AND $fold != ".." && $fold != "autoloading_include.php") {
                     $foldArray = explode(".", $fold);
-                    if (count($foldArray) === 2 AND $foldArray[1] === "php") {
+                    if (count($foldArray) === 2 && $foldArray[1] === "php" && is_readable($fold)) {
 
                         array_push($dirProper, $fold);
                     }
