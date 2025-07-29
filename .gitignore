@@ -7,9 +7,14 @@
 
 # Ignorer les dépendances
 /vendor
-
+/latex
+nbproject
 # Ignore mdp
 mdpstatic
 
 # Ignore Doxygen
 Doxyfile
+
+# Ignorer zone de test
+text.txt
+test.php

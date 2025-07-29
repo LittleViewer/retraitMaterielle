@@ -35,7 +35,7 @@ class membre_class {
     
     function connectToClassExpendException() {
         require_once 'class/exceptionExtend.php';
-        $exceptionExtend = new errorExtend();
+        $exceptionExtend = new exceptionExtend();
         return $exceptionExtend;
     }
 
