@@ -1,0 +1,15 @@
+# Ignorer les fichiers sensibles
+.env
+.env.local
+
+# Ignorer les logs
+*.log
+
+# Ignorer les dépendances
+/vendor
+
+# Ignore mdp
+mdpstatic
+
+# Ignore Doxygen
+Doxyfile
