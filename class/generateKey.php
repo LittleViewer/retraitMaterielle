@@ -46,10 +46,8 @@ class generateKey {
                 
                 $keyPossible = array_search($pathNew, scandir($explodePath[0]."/"));
                 var_dump(($keyPossible));
-                echo "class/".$explodePath[1]." ";
-                echo "class/".$pathNewNotFolder;
                 if ($keyPossible === false) {
-                    rename("class/".$explodePath[1], "class/".$pathNewNotFolder);
+                    rename(__DIR__."/class/".$explodePath[1], __DIR__."class/".$pathNewNotFolder);
                 }
                 var_dump($keyPossible);
                 

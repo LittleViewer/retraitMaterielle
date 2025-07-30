@@ -6,10 +6,10 @@
  */
 
 /**
- * Description of test_class
+ * Description of testtest
  *
  * @author root
  */
-class test_class {
+class testtest {
     //put your code here
 }
