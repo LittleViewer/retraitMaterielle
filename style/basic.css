@@ -292,3 +292,83 @@ form {
 
 
 
+
+/* ===========================
+   Header & Navigation
+   =========================== */
+.main-header {
+  background-color: #2a76d2;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.main-footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background-color: #f0f0f0;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.agent-list {
+  list-style: none;
+  padding: 0;
+}
+
+.agent-list li + li {
+  margin-top: 0.5rem;
+}
+
+.agent-list a {
+  color: #2a76d2;
+  text-decoration: none;
+}
+
+.agent-list a:hover {
+  text-decoration: underline;
+}
+
+.btn-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #2a76d2;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  background-color: #1f5bb5;
+}

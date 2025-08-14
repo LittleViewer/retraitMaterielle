@@ -370,13 +370,12 @@ class db_pdo {
      * @param string $date
      */
     function footerNewEntryGenerator($marque, $modele, $serialNumber, $date) {
-        if (!isset($marque) OR !isset($modele) OR !isset($serialNumber)) {
-            echo "<footer>Il semblent y a voir des erreur</footer>";
+        if (!isset($marque) || !isset($modele) || !isset($serialNumber)) {
+            return "<div class='alert alert-error'>Il semblent y avoir des erreur</div>";
         } else {
-            echo "<footer> L'appareil au numéro de série " . $serialNumber .
-            " de marque " . $marque . " dont le modele est " .
-            $modele . " est retirer du service à date du " . $date . "</footer>";
-            ;
+            return "<div class='alert alert-success'> L'appareil au numéro de série " . $serialNumber .
+                " de marque " . $marque . " dont le modele est " .
+                $modele . " est retirer du service à date du " . $date . "</div>";
         }
     }
 

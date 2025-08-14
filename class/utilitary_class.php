@@ -20,23 +20,24 @@ class utilitary_class {
     }
     
     function header_generator_automatic() {
+        $current = basename($_SERVER['PHP_SELF']);
+        $navItems = [
+            'index.php' => 'Accueil',
+            'list_agent.php' => 'Agents',
+            'modify_entry.php' => 'Modifier',
+            'pdf_historic.php' => 'Historique PDF'
+        ];
 
-        echo "<header><center><h1>Retrait de Service</h1><br>";
-        $arrayDir = scandir("./");
+        echo "<header class='main-header'><div class='container'>";
+        echo "<h1 class='site-title'>Retrait de Service</h1>";
+        echo "<nav><ul class='nav'>";
 
-        foreach ($arrayDir as $document) {
-            if ($document != "." AND $document != ".." AND $document != "class" AND $document != "historic_agent.php"
-                    AND $document != "test.php" AND $document != "modify_entry.php" AND $document != "style"
-                    AND $document != "latex" AND $document != "Doxyfile") {
-                $arrayDocument = explode(".php", $document);
-                if ($document != "index.php") {
-                    echo "<a href='" . $document . "'>" . $arrayDocument[0] . "</a> ";
-                } else {
-                    echo "<a href='" . $document . "'>retrait_materielle</a>  ";
-                }
-            }
+        foreach ($navItems as $file => $label) {
+            $active = $current === $file ? " class='active'" : '';
+            echo "<li><a href='" . $file . "'" . $active . ">" . $label . "</a></li>";
         }
-        echo "</center></header>";
+
+        echo "</ul></nav></div></header>";
     }
     /**
      * Vérificateur via division
